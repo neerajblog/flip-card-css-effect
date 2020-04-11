@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *
+        {
+            margin: 0;
+            padding: 0;
+        }
+       body
+        {
+            background: #091921;
+            
+        }
+        .box
+        {
+            box-sizing: border-box;
+            height: 95vh;
+            border: 3px solid #FFB916;
+            border-radius: 20px;
+            margin: 10px;
+            display: grid;
+            grid-template-columns: 50% 50% ;
+            grid-template-rows: 15% 30% 40% 15%;
+            grid-template-areas: 
+            "header header "
+            "main main "
+            "sect1  sect2"
+            "sect1 foot2 ";
+
+        }
+        header
+        {
+            grid-area: header;
+           
+            text-align: center;
+            font-size: 40px;
+            color:#FFB916 ;
+        }
+        main
+        {
+            grid-area: main;
+           
+        }
+        section:nth-of-type(1)
+        {
+            grid-area: sect1;
+          
+        }
+        section:nth-of-type(2)
+        {
+            grid-area: sect2;
+           
+        }
+        
+      
+        footer:nth-of-type(2)
+        {
+            grid-area: foot2;
+            
+        }
+        .p1
+        {
+            margin-top: 18px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .ques-container
+        {
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+            margin-top: 25px;
+            margin-left: 55px;
+            display: none;
+            
+            
+        }
+        .one
+        {
+            margin-left: 120px;
+            margin-top: -21px;
+            color: white;
+            
+            font-size: 18px;
+            animation:quiz 2s ease-in;
+        }
+        .question
+        {
+            animation:quiz 2s ease-in;
+        }
+        #option1, #option2,#option3,#option4,#option11111, #option22222,#option33333,#option44444,#option11, #option22,#option33,#option44, #option111, #option222,#option333,#option444,#option1111, #option2222,#option3333,#option4444
+        {
+            margin: 12px 20px 0px 40px;
+            font-size: 25px;
+            color: blue;
+            
+        }
+        input-radio
+        {
+            color: blue;
+        }
+       
+       .container
+       {
+           margin-top: -30px;
+          
+          
+       }
+        #l1,#l2,#l3,#l4
+        {
+            color: white;
+            font-size: 16px;
+            border: 2px solid #091921;
+            width: 250px;
+           height: 40px;
+           font-family: Arial, Helvetica, sans-serif;
+           cursor: pointer;
+           margin-top: -25px;
+            margin-left: 60px;
+            background-color: #091921;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 -15px 15px rgba(255, 255, 255, 0.02),
+            inset 0 -15px 15px rgba(255,255,255,0.02),
+             0 15px 15px rgba(0,0,0,0.02),
+             inset 0 15px 15px rgba(0,0,0,0.02);
+                        
+
+        }
+        #l1:hover,#li:hover .body
+        {
+            background-color:#1e536e;
+        }
+       
+
+        #l2:hover
+        {
+            background-color:#C15865;
+        }
+        #l3:hover
+        {
+            background-color:rgb(235, 67, 67);
+        }
+        #l4:hover
+        {
+            background-color:rgb(53, 53, 212);
+        }
+        .next1:hover
+        {
+            background-color:#1e536e;
+        } 
+        .submit:hover
+        {
+            background-color:#901921;
+        }
+        .next1
+        {
+            display: none;
+            background: #091921;
+          
+            color: white;
+            border: 4px solid #091921;
+            padding: 10px 40px 10px 30px;
+            border-radius: 40%;
+            margin: 0px 20px 10px 80px;
+            font-weight: bold;
+            font-size: 16px;
+            outline: none;
+            cursor: pointer;
+            box-shadow: 0 -15px 15px rgba(255, 255, 255, 0.05),
+            inset 0 -15px 15px rgba(255,255,255,0.05),
+             0 15px 15px rgba(0,0,0,0.03),
+             inset 0 15px 15px rgba(0,0,0,0.03);
+            
+            animation: swipe 0.5s ease forwards;
+            animation-delay: 3s;
+                        
+        }
+        @keyframes swipe{
+            0%{opacity: 0;}
+            70%{opacity: .5;}
+            100%{ opacity: 1;}
+        }
+      
+        .submit
+        {
+            display: none;
+            background:red;
+            outline: none;
+            box-shadow: 0 -15px 15px rgba(255, 255, 255, 0.05),
+            inset 0 -15px 15px rgba(255,255,255,0.05),
+             0 15px 15px rgba(0,0,0,0.03), 
+             inset 0 15px 15px rgba(0,0,0,0.03);
+               border:2px solid #901921;        
+          position: relative;
+          top: -500px;
+            color: white;
+            padding: 10px 40px 10px 30px;
+            border-radius: 40%;
+           margin-left: 380px;
+            margin-top: -80px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            animation: drop3 0.5s ease forwards;
+            animation-delay: 1s;
+        }
+        .req
+        {
+            outline: none;
+            color: white;
+            padding: 10px 40px 10px 30px;
+            background-color: #091921;
+            border: 2px solid #091921;
+            border-radius: 20px;
+            margin-left: 100px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .bu
+        {
+            padding: 5px;
+            margin-top: 25px;
+            margin-left: 80px;
+            outline: none;
+        }
+        .req:hover
+        {
+            background: #0d628d;
+        }
+        img
+        {
+            width: 250px;
+            height: 150px;
+            margin-left: 20px;
+           
+            
+        }
+      
+        .arrow
+        {
+            width:30px;
+            height: 20px;
+            margin-right:10px;
+        }
+        .time,.stop
+        {
+            color: white;
+            font-size: 40px;
+            margin-top: 30px;
+            margin-left: 30px;
+        }
+        .circle
+        {
+            animation: drop 0.5s ease forwards;
+            animation-delay: 1.4s;
+            position: relative;
+            top: -450px;
+           display: none;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color:#091921 ;
+            border: 4px solid #091921;
+            margin-left: 200px;
+            box-shadow: 0 -15px 15px rgba(255, 255, 255, 0.05),
+            inset 0 -15px 15px rgba(255,255,255,0.05),
+             0 15px 15px rgba(0,0,0,0.02),
+             inset 0 15px 15px rgba(0,0,0,0.02);
+                        
+                     
+                       
+        }
+        #image
+        {
+            display: none;
+           float: right ;
+           margin-top: -150px;
+        }
+        .pop-up
+        {
+            width: 300px;
+            height: 150px;
+            background: #c5975b;
+            margin-left: -140px;
+            top: -450px;
+            position: relative;
+            animation: drop3 0.5s ease forwards;
+            animation-delay:1s; 
+        }
+        .pop-up1
+        {
+            display: none;
+            width: 300px;
+            height: 150px;
+            background: #c5975b;
+            margin-left: -140px;
+            top: -450px;
+            position: relative;
+            animation: drop2 0.5s ease forwards;
+            animation-delay:1s; 
+        }
+        @keyframes drop{
+            0%{opacity: 0;}
+            70%{transform:translateY(550px);}
+            100%{transform: translateY(500px); opacity: 1;}
+        }
+        @keyframes drop3{
+            0%{opacity: 0;}
+            70%{transform:translateY(450px);}
+            100%{transform: translateY(400px); opacity: 1;}
+        }
+        @keyframes drop2{
+            0%{opacity: 0;}
+            70%{transform:translateY(390px);}
+            100%{transform: translateY(340px); opacity: 1;}
+        }
+        @keyframes drop1{
+            0%{opacity: 0;}
+            70%{transform:translateY(550px);}
+            100%{transform: translateY(500px); opacity: 1;}
+        }
+        .namaste
+        {
+            width: 100px;
+            height: 100px;
+            margin-left: 560px;
+            margin-top: 70px;
+            border-radius: 50%;
+            top: -450px;
+            position: relative;
+            animation: drop3 0.5s ease forwards;
+            animation-delay:1s; 
+
+        }
+        .permit
+        {
+            color: black;
+            text-align: center;
+            font-size: 22px;
+           font-family: Arial, Helvetica, sans-serif;
+            padding: 15px;
+            font-weight: 500;
+           
+        }
+        .permit1
+        {
+            color: black;
+            text-align: center;
+            font-size: 16px;
+           font-family: Arial, Helvetica, sans-serif;
+            padding:8px;
+            font-weight: bold;
+           
+        }
+        .circle1
+        {
+            display: block;
+        }
+        .circle2
+        {
+            display: none;
+        }
+        .circle3
+        {
+            display: block;
+        }
+        .circle4
+        {
+            display: none;
+        }
+       
+        .circle5
+        {
+            display: block;
+        }
+        .circle6
+        {
+            display: none;
+        }
+        .circle7
+        {
+            display: block;
+        }
+        .circle8
+        {
+            display: none;
+        }
+        .circle9
+        {
+            display: block;
+        }
+        .circle10
+        {
+            display:none;
+        }
+        .next
+        {
+            background-color:#1e536e;
+            
+        }
+       
+        .quiz,.quiz1,.quiz2,.quiz3,.quiz4
+        {
+            display: none;
+            animation:quiz 2s ease-in;
+            margin-top: 30px;
+           
+        }
+        
+        @keyframes quiz{
+            0%{
+                opacity: 0;
+            }
+           
+            70%
+            {
+                opacity: .5;
+            }
+            100%
+            {
+                opacity: 1;
+            }
+        }
+        @keyframes quiz1{
+            0%{
+                opacity: 0;
+            }
+           
+            70%
+            {
+                opacity: .5;
+            }
+            100%
+            {
+                opacity: 1;
+            }
+        }
+        #submit2
+        {
+            display: none;
+        }
+        #submit3
+        {
+            display: none;
+        }
+        #submit4
+        {
+            display: none;
+        }
+        .time2
+        {
+            display: none;
+        }
+        .good,.good1
+        {
+            display: none;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            margin-left: 300px;
+           position: relative;
+           top:-380px;
+            animation: drop3 0.5s ease forwards;
+            animation-delay: .5s;
+        }
+        .h3
+        {
+            display: none;
+            top:-450px;
+            position: relative;
+            animation: drop3 0.5s ease forwards;
+            margin-left: 450px;
+            font-size: 60px;
+           color: #FFB916;
+           animation-delay: .3s;
+
+        }
+        .one1
+        {
+            
+            display: none;
+            width: 160px;
+            height: 160px;
+            margin-top: -30px;
+            margin-left: -100px;
+            animation: one 1.4s ease forwards;
+            
+        }
+        .star
+        { width: 100px;height: 50px;  margin-top: -150px;
+            margin-left:600px;animation:quiz1 1s ease-in;
+        }
+        
+        .time1
+        {
+            
+            display: none;
+           font-size: 70px;
+           color: red;
+            margin-top: -40px;
+            margin-left: -100px;
+            animation: incorrect 1.4s ease forwards;
+            font-weight: bolder;
+            
+        }
+        @keyframes incorrect{
+            0%{opacity: 1;}
+            70%{font-size: 40px;}
+            100%{font-size: 60px;}
+        }
+        @keyframes one{
+            0%{
+                opacity:1
+            }
+            70%{width: 50px;height: 50px; }
+            100%
+            {
+                width:160px;    height: 160px;
+            }
+        }
+      
+      
+        .jio
+        {  
+            display: none;
+            width: 200px;
+            height: 170px;
+           margin-left: 350px;
+           margin-top: 30px;
+           animation: one 1.4s ease;
+           border-radius: 50%;
+        }
+        .refresh
+        {
+          display: none;
+            background:#F38321;
+            outline: none;
+            box-shadow: 0 -15px 15px rgba(255, 255, 255, 0.05),
+            inset 0 -15px 15px rgba(255,255,255,0.05),
+             0 15px 15px rgba(0,0,0,0.03), 
+             inset 0 15px 15px rgba(0,0,0,0.03);
+               border:2px solid #901921;        
+               position: relative;
+          top: -350px;
+            color:#fff;
+            padding: 10px 40px 10px 30px;
+            border-radius: 10px;
+           margin-left: 320px;
+            margin-top: -80px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            animation: drop1 0.5s ease forwards;
+            animation-delay: 1s;
+        }
+        .refresh:hover
+        {
+            background-color: #FFB916;
+        }
+        #invalid
+        {
+            display: none;
+        }
+        #submit6
+        {
+            margin-left: 40px;
+          
+        }
+    </style>
+</head>
+<body class="body">
+    <div class="box">
+        <header>
+            <p class="p1"><u>JS QUIZ GAME</u></p>
+            
+        </header>
+        <main>
+           <div class="ques-container">
+           
+               <p class="question">Question : 1</p>
+               <pre class="one">What is the output of the following C programe fragment:
+
+
+int main() {     char c = 255;  c=c+10;    printf("%d",c);   return 0;}
+               </pre> 
+                 
+                 
+               
+               
+           </div>
+           <img src="namaste.png" class="namaste">
+           <img src="good.png" class="good">
+           <h1 class="h3">LEVEL-1</h1>
+        </main>
+        <section>
+            
+            <div class="container"> 
+                <form name="quiz" class="quiz">
+                    <input type="radio" id="option1" name="question1" value="265" class="alert" >
+                <label for="option1" ><div id="l1" >265</div></label><br>
+                <input type="radio" id="option2" name="question1" value="some character according to ASCII value" class="alert">
+                <label for="option2" ><div id="l2" >some character according to ASCII value</div></label><br>
+                <input type="radio" id="option3" name="question1" value="7" class="alert">
+                <label for="option3"><div id="l3" >7</div></label><br>
+                <input type="radio" id="option4" name="question1" value="9" class="alert">
+                <label for="option4" ><div id="l4" >9</div></label>
+
+                </form>
+
+                <form name="quiz1" class="quiz1">
+                    <input type="radio" id="option11" name="question2" value="0" class="alert" >
+                <label for="option11" ><div id="l1" >0</div></label><br>
+                <input type="radio" id="option22" name="question2" value="1" class="alert">
+                <label for="option22" ><div id="l2" >1</div></label><br>
+                <input type="radio" id="option33" name="question2" value="5" class="alert">
+                <label for="option33"><div id="l3" >5</div></label><br>
+                <input type="radio" id="option44" name="question2" value="Compiler Error" class="alert">
+                <label for="option44" ><div id="l4" >Compiler Error</div></label>
+
+                </form>
+
+                
+                <form name="quiz2" class="quiz2">
+                    <input type="radio" id="option111" name="question3" value="signed int i" class="alert" >
+                <label for="option111" ><div id="l1" >signed int i</div></label><br>
+                <input type="radio" id="option222" name="question3" value="signed i" class="alert">
+                <label for="option222" ><div id="l2" >signed i</div></label><br>
+                <input type="radio" id="option333" name="question3" value="long int i" class="alert">
+                <label for="option333"><div id="l3" >long int i</div></label><br>
+                <input type="radio" id="option444" name="question3" value="All of the above" class="alert">
+                <label for="option444" ><div id="l4" >All of the above</div></label>
+
+                </form>
+
+                <form name="quiz3" class="quiz3">
+                    <input type="radio" id="option1111" name="question4" value="52" class="alert" >
+                <label for="option1111" ><div id="l1" >52</div></label><br>
+                <input type="radio" id="option2222" name="question4" value="56" class="alert">
+                <label for="option2222" ><div id="l2" >56</div></label><br>
+                <input type="radio" id="option3333" name="question4" value="42" class="alert">
+                <label for="option3333"><div id="l3" >42</div></label><br>
+                <input type="radio" id="option4444" name="question4" value="Complie Time Error" class="alert">
+                <label for="option4444" ><div id="l4" >Complie Time Error</div></label>
+
+                </form>
+                <form name="quiz4" class="quiz4">
+                    <input type="radio" id="option11111" name="question5" value="TRUE" class="alert" >
+                <label for="option11111" ><div id="l1" >TRUE</div></label><br>
+                <input type="radio" id="option22222" name="question5" value="FALSE" class="alert">
+                <label for="option22222" ><div id="l2" >FALSE</div></label><br>
+                <input type="radio" id="option33333" name="question5" value="Syntax Error" class="alert">
+                <label for="option33333"><div id="l3" >Syntax Error</div></label><br>
+                <input type="radio" id="option44444" name="question5" value="Run Time error" class="alert">
+                <label for="option44444" ><div id="l4" >Run Time error</div></label>
+
+                </form>
+
+                
+            </div>
+            <button type="button" class="submit" name="submit1" id="submit1">SUBMIT</button>
+            <button type="button" class="submit" name="submit2" id="submit2">SUBMIT</button>
+            <button type="button" class="submit" name="submit3" id="submit3">SUBMIT</button>
+            <button type="button" class="submit" name="submit4" id="submit4">SUBMIT</button>
+            <button type="button" class="submit" name="submit5" id="submit5">SUBMIT</button>
+            <button type="button" class="submit" name="submit6" id="submit6">SHOW SCORE</button>
+          
+            
+            <img src="win.png" class="jio">
+            <button class="refresh">RESTART THE GAME</button>
+          
+        </section>
+        <section>
+           
+            <div class="pop-up">
+                <p class="permit">Let's start the JS QUIZ GAME</p>
+                <button class="req">START</button>
+                
+            </div>
+            <div class="pop-up1">
+                <p class="permit1"></p>
+                <button class="req"  id="invalid">ok</button>
+                
+            </div>
+            <div class="circle">
+                <p class="time"></p>
+                <p class="stop"></p>
+               
+            </div>
+           <img src="one.png" class="one1">
+                <p class="time1"></p>
+            
+            
+           
+           
+               
+        </section>
+        
+        <footer>
+            <button type="button" class="next1" name="next1" id="next1">NEXT </button>
+            <button type="button" class="next1" name="next2" id="next2">NEXT </button>
+            <button type="button" class="next1" name="next3" id="next3">NEXT </button>
+            <button type="button" class="next1" name="next4" id="next4">NEXT </button>
+            
+        </footer>
+       
+    </div>
+   
+       <script>
+           "use strict"
+           
+          document.querySelector(".req").addEventListener("click",start);
+
+        function start()
+        {
+            
+            document.querySelector(".pop-up").style="display:none";
+            document.querySelector(".namaste").style="display:none";
+            document.querySelector(".one").style="display:block";
+                       document.querySelector(".quiz").style="display:block";
+                       document.querySelector(".ques-container").style="display:block";
+                      
+                       document.querySelector(".submit").style="display:block";
+                     
+            document.querySelector(".circle").classList.add("circle1");
+
+        
+         
+          var time=setInterval(timer,1000)
+            var i=30;
+            function timer()
+
+            {
+               
+                   
+                if(i<0)
+                   {
+                       debugger
+                       
+                       setTimeout(time);
+                       document.querySelector(".time1").style="display:block";
+                       var b= document.querySelector(".time1").innerHTML;
+                       console.log(b)
+                        if(b==='SCORE : 1'||b==='SCORE : 2'||b==='SCORE : 3'||b==='SCORE : 4')
+                        {
+                            document.querySelector(".jio").style="display:none";
+                                document.querySelector(".time1").style.color="#DCB51A";
+
+                        }else{document.querySelector(".time1").innerHTML="YOU LOOSE !"}
+                                
+                        
+                                    document.querySelector(".next1").style="display:none";
+                                               
+                                        document.querySelector(".h3").style="display:block";
+                                                    document.querySelector(".good").style="display:block";
+                                        
+                                    document.querySelector(".circle").style="display:none";
+                                       
+                                    document.querySelector(".pop-up1").style="display:none";
+                                    document.querySelector(".one").style="display:block";
+                                    document.querySelector(".quiz").style="display:none";
+                                    document.querySelector(".quiz1").style="display:none";
+                                    document.querySelector(".quiz2").style="display:none";
+                                    document.querySelector(".quiz3").style="display:none";
+                                    document.querySelector(".quiz4").style="display:none";
+                                    document.querySelector(".ques-container").style="display:none";
+                                  
+                                    
+                                            
+
+                                    document.querySelector(".submit").style="display:none";
+                                    document.getElementById("submit2").style="display:none";
+                                    document.getElementById("submit3").style="display:none";
+                                    document.getElementById("submit4").style="display:none";
+                                    document.getElementById("submit5").style="display:none";
+                                    document.querySelector(".refresh").style="display:block";
+                                
+                                    console.log(correct);
+                            
+                    }
+
+                   
+                   else if(i<16)
+                   {
+                        document.querySelector(".time").innerHTML=i+"s";
+                        i--;
+                       document.querySelector(".circle").style="border:4px solid red";
+                   }
+                  
+                   else{
+                    document.querySelector(".circle").style="display:block";
+                    document.querySelector(".time").innerHTML=i+"s";
+                    i--;
+                    document.querySelector(".circle").style="border:4px solid green";
+                   }
+                   
+
+
+            
+        
+        
+            
+               
+                var submit_length=document.querySelectorAll(".submit").length;
+                for(var n=0;n<submit_length;n++)
+                {
+                    document.querySelectorAll(".submit")[n].addEventListener("click",submit);
+                }
+             
+                
+                function submit()
+                   {
+                       
+                      var correct;
+                        setTimeout(time);
+                                         
+                       
+
+                       if(i>0)
+                       {
+                          
+                          
+                           document.querySelector(".time").style="display:none";
+                          
+                            document.querySelector(".stop").style="display:block";
+                           
+
+                           document.querySelector(".stop").innerHTML=i +"s";
+                       }
+
+                       var show=this.name;
+                       switch(show)
+                       {
+
+                           case "submit1":
+                           {
+                                var correct=0;
+                                document.querySelector(".time1").classList.add("time2");
+                                var question=document.quiz.question1.value;
+                                console.log(correct);
+                                if(question=="")
+                                {
+                                   
+                                    var a=document.querySelector(".pop-up1");
+                                    a.style.cssText="display:block;width:200px;height:100px;";
+
+                                   
+                                   document.getElementById("invalid").classList.add("bu");
+                                   
+                                    document.querySelector(".permit1").innerHTML="please click the answer";
+                                    document.getElementById("invalid").style="display:block";
+                                    document.querySelector(".time").style="display:block";
+                                    document.querySelector(".stop").style="display:none";
+                                    document.querySelector(".req").style="display:none";
+                                    
+                                    document.getElementById("invalid").addEventListener("click",valid);
+                                    function valid()
+                                    {
+                                        document.querySelector(".pop-up1").style="display:none";
+                                    }
+                                }
+                                else if(question=="9")
+                                {
+                                    i=1000;
+                                    debugger
+                                    document.querySelector(".next1").style="display:block";
+                                    document.querySelector(".jio").style="display:block";
+                                    document.querySelector(".one1").style="display:block";
+                                    document.querySelector(".h3").style="display:block";
+                                    document.querySelector(".good").style="display:block";
+                                   
+                                    document.querySelector(".circle").classList.add("circle2");
+                                        document.querySelector(".next1").classList.add("next");
+                                   
+                                    document.querySelector(".one").style="display:block";
+                                   
+                                    document.querySelector(".quiz").style="display:none";
+                                    document.querySelector(".ques-container").style="display:none";
+                                    
+                                    document.querySelector(".submit").style="display:none";
+                                    
+                                
+                                        
+                                        correct++ ;
+                                      
+                                       document.querySelector(".time1").innerHTML=`SCORE : ${correct}`;
+                                    
+                                    
+                            
+                           
+                                }
+                                else
+                                {
+                                   
+                                    document.querySelector(".next1").style="display:none";
+                                   var check=`win${1}.png`;
+                                    document.querySelector(".jio").setAttribute("src",check);
+                                    document.querySelector(".jio").style="display:block";
+                                    
+                                    document.querySelector(".time1").innerHTML="YOU LOOSE !";
+                                    document.querySelector(".time1").style="display:block";
+                                    document.querySelector(".h3").style="display:block";
+                                    document.querySelector(".good").style="display:block";
+                                   
+                                    document.querySelector(".circle").classList.add("circle2");
+                                       
+                                   
+                                    document.querySelector(".one").style="display:block";
+                                    document.querySelector(".quiz").style="display:none";
+                                    document.querySelector(".ques-container").style="display:none";
+                                    
+                                    document.querySelector(".submit").style="display:none";
+                                    
+                                    document.querySelector(".refresh").style="display:block";
+                                    document.getElementById("submit6").style="display:block";
+
+                                    document.getElementById("submit6").addEventListener("click",score);
+
+                                    function score(){ i=1000;
+                                document.querySelector(".time1").style.fontSize="100px";
+                                document.querySelector(".time1").innerHTML="SCORE:"+correct;
+                                       
+                                console.log(correct);
+                                document.getElementById("submit6").style="display:none";
+                               
+                                document.querySelector(".jio").style="display:none";
+                                        
+                                }
+                                
+                                    console.log(correct);
+                                }
+                      
+                            break;
+                            }
+
+                            case "submit2":
+                            {
+                                var correct=1;
+                                document.querySelector(".time1").classList.add("time2");
+                                        var question=document.quiz1.question2.value;
+                                        console.log(correct);
+
+                                if(question=="")
+                                {
+                                    
+                                        
+                                    var a=document.querySelector(".pop-up1");
+                                    a.style.cssText="display:block;width:200px;height:100px;";
+
+                                   
+                                   document.getElementById("invalid").classList.add("bu");
+                                   
+                                    document.querySelector(".permit1").innerHTML="please click the answer";
+                                    document.getElementById("invalid").style="display:block";
+                                    document.querySelector(".time").style="display:block";
+                                    document.querySelector(".stop").style="display:none";
+                                    document.querySelector(".req").style="display:none";
+                                    
+                                    document.getElementById("invalid").addEventListener("click",valid);
+                                    function valid()
+                                    {
+                                        document.querySelector(".pop-up1").style="display:none";
+                                    }
+                                }
+                               
+                                else if(question=="1")
+                                {
+                                    i=1000;
+                                    debugger
+                                    document.getElementById("next2").style="display:block";
+                                    document.querySelector(".jio").style="display:block";
+                                    document.querySelector(".one1").style="display:block";
+                                    document.querySelector(".h3").style="display:block";
+                                    document.querySelector(".good").style="display:block";
+                                   
+                                   
+                                    document.querySelector(".circle").classList.add("circle4");
+                                        document.getElementById("next2").classList.add("next");
+                                   
+                                    document.querySelector(".one").style="display:block";
+                                    document.querySelector(".quiz1").style="display:none";
+                                    document.querySelector(".ques-container").style="display:none";
+                                    
+                                    document.getElementById("submit2").style="display:none";
+                                   
+                                
+                                    
+                                   
+                                        correct++;
+                                    
+                            
+                                        document.querySelector(".time1").innerHTML=`SCORE : ${correct}`;
+                                }
+                                else
+                                {
+                                   
+                                    document.getElementById("next1").style="display:none";
+                                   var check=`win${1}.png`;
+                                    document.querySelector(".jio").setAttribute("src",check);
+                                    document.querySelector(".jio").style="display:block";
+                                    document.getElementById("submit6").style="display:block";
+                                    document.querySelector(".time1").innerHTML="YOU LOOSE!";
+                                    document.querySelector(".time1").style="display:block";
+                                    document.querySelector(".h3").style="display:block";
+                                    document.querySelector(".good").style="display:block";
+                                   
+                                    document.querySelector(".circle").classList.add("circle4");
+                                       
+                                   
+                                    document.querySelector(".one").style="display:block";
+                                    document.querySelector(".quiz1").style="display:none";
+                                    document.querySelector(".ques-container").style="display:none";
+                                    
+                                    document.getElementById("submit2").style="display:none";
+                                    
+                                    document.querySelector(".refresh").style="display:block";
+
+                                    document.getElementById("submit6").addEventListener("click",score);
+
+                                    function score(){  i=1000;
+                                        debugger;
+                                            document.querySelector(".time1").style.fontSize="100px";
+                                            document.querySelector(".time1").innerHTML="SCORE:"+correct;
+                                            document.querySelector(".time1").style="display:block";
+                                            document.querySelector(".time1").style.color="#DCB51A";
+                                            console.log(correct);
+                                            document.getElementById("submit6").style="display:none";
+                                        
+                                            document.querySelector(".jio").style="display:none";}
+                                
+                                
+                                    console.log(correct);
+                                }
+                      
+                      
+                            break;
+                            }
+                            case "submit4":
+                            {
+                                var correct=3;
+                                document.querySelector(".time1").classList.add("time2");
+                                var question=document.quiz3.question4.value;
+                                console.log(correct);
+                                if(question=="")
+                                {
+                                   
+                                    var a=document.querySelector(".pop-up1");
+                                    a.style.cssText="display:block;width:200px;height:100px;";
+
+                                   
+                                   document.getElementById("invalid").classList.add("bu");
+                                   
+                                    document.querySelector(".permit1").innerHTML="please click the answer";
+                                    document.getElementById("invalid").style="display:block";
+                                    document.querySelector(".time").style="display:block";
+                                    document.querySelector(".stop").style="display:none";
+                                    document.querySelector(".req").style="display:none";
+                                    
+                                    document.getElementById("invalid").addEventListener("click",valid);
+                                    function valid()
+                                    {
+                                        document.querySelector(".pop-up1").style="display:none";
+                                    }
+                                }
+                                
+                               
+                                
+                                else if(question=="42")
+                                {
+                                    i=1000;
+                                    debugger
+                                    document.getElementById("next4").style="display:block";
+                                    document.querySelector(".jio").style="display:block";
+                                    document.querySelector(".one1").style="display:block";
+                                    document.querySelector(".h3").style="display:block";
+                                    document.querySelector(".good").style="display:block";
+                                  
+                                   
+                                    document.querySelector(".circle").classList.add("circle8");
+                                        document.getElementById("next4").classList.add("next");
+                                   
+                                    document.querySelector(".one").style="display:block";
+                                    document.querySelector(".quiz3").style="display:none";
+                                    document.querySelector(".ques-container").style="display:none";
+                                    
+                                    document.getElementById("submit4").style="display:none";
+                                   
+                                
+                                    
+                                   
+                                        correct++;
+                                        document.querySelector(".time1").innerHTML=`SCORE : ${correct}`;
+                            
+                           
+                                }
+                                else
+                                {
+                                   
+                                    document.querySelector(".next1").style="display:none";
+                                   var check=`win${1}.png`;
+                                    document.querySelector(".jio").setAttribute("src",check);
+                                    document.querySelector(".jio").style="display:block";
+                                    document.getElementById("submit6").style="display:block";
+                                    document.querySelector(".time1").innerHTML="YOU LOOSE !";
+                                    document.querySelector(".time1").style="display:block";
+                                    document.querySelector(".h3").style="display:block";
+                                    document.querySelector(".good").style="display:block";
+                                   
+                                    document.querySelector(".circle").classList.add("circle8");
+                                       
+                                   
+                                    document.querySelector(".one").style="display:block";
+                                    document.querySelector(".quiz3").style="display:none";
+                                    document.querySelector(".ques-container").style="display:none";
+                                    
+                                    document.getElementById("submit4").style="display:none";
+                                    
+                                    document.querySelector(".refresh").style="display:block";
+                                    document.getElementById("submit6").addEventListener("click",score);
+
+                                            function score(){  i=1000;
+                                                debugger;
+                                                    document.querySelector(".time1").style.fontSize="100px";
+                                                   
+                                                    document.querySelector(".time1").innerHTML="SCORE:"+correct;
+                                                    document.querySelector(".time1").style="display:block";
+                                                    document.querySelector(".time1").style.color="#DCB51A";
+                                                    console.log(correct);
+                                                    document.getElementById("submit6").style="display:none";
+                                                
+                                                    document.querySelector(".jio").style="display:none";}
+
+                                
+                                    console.log(correct);
+                                }
+                      
+                            break; }
+
+                            case "submit3":
+                            {
+                                var correct=2;
+                                document.querySelector(".time1").classList.add("time2");
+                                var question=document.quiz2.question3.value;
+
+                                if(question=="")
+                                {
+                                   
+                                    var a=document.querySelector(".pop-up1");
+                                    a.style.cssText="display:block;width:200px;height:100px;";
+
+                                   
+                                   document.getElementById("invalid").classList.add("bu");
+                                   
+                                    document.querySelector(".permit1").innerHTML="please click the answer";
+                                    document.getElementById("invalid").style="display:block";
+                                    document.querySelector(".time").style="display:block";
+                                    document.querySelector(".stop").style="display:none";
+                                    document.querySelector(".req").style="display:none";
+                                    
+                                    document.getElementById("invalid").addEventListener("click",valid);
+                                    function valid()
+                                    {
+                                        document.querySelector(".pop-up1").style="display:none";
+                                    }
+                                }
+                               
+                               
+                                else if(question=="All of the above")
+                                {
+                                    i=1000;
+                                    debugger
+                                    document.getElementById("next3").style="display:block";
+                                    document.querySelector(".jio").style="display:block";
+                                    document.querySelector(".one1").style="display:block";
+                                    document.querySelector(".h3").style="display:block";
+                                    document.querySelector(".good").style="display:block";
+                                   
+                                   
+                                    document.querySelector(".circle").classList.add("circle6");
+                                        document.getElementById("next3").classList.add("next");
+                                   
+                                    document.querySelector(".one").style="display:block";
+                                    document.querySelector(".quiz2").style="display:none";
+                                    document.querySelector(".ques-container").style="display:none";
+                                    
+                                    document.getElementById("submit3").style="display:none";
+                                   
+                                
+                                    
+                                     correct++;
+                                     document.querySelector(".time1").innerHTML=`SCORE : ${correct}`;
+                            
+                           
+                                }
+                                else
+                                {
+                                   
+                                    document.querySelector(".next1").style="display:none";
+                                   var check=`win${1}.png`;
+                                    document.querySelector(".jio").setAttribute("src",check);
+                                    document.querySelector(".jio").style="display:block";
+                                    document.getElementById("submit6").style="display:block";
+                                    document.querySelector(".time1").innerHTML="YOU LOOSE !";
+                                    document.querySelector(".time1").style="display:block";
+                                    document.querySelector(".h3").style="display:block";
+                                    document.querySelector(".good").style="display:block";
+                                   
+                                    document.querySelector(".circle").classList.add("circle6");
+                                       
+                                   
+                                    document.querySelector(".one").style="display:block";
+                                    document.querySelector(".quiz2").style="display:none";
+                                    document.querySelector(".ques-container").style="display:none";
+                                    
+                                    document.getElementById("submit3").style="display:none";
+                                    
+                                    document.querySelector(".refresh").style="display:block";
+
+                                    document.getElementById("submit6").addEventListener("click",score);
+
+                                    function score(){  i=1000;
+                                                    debugger;
+                                                        document.querySelector(".time1").style.fontSize="100px";
+                                                       
+                                                        document.querySelector(".time1").innerHTML="SCORE:"+correct;
+                                                        
+                                                        document.querySelector(".time1").style="display:block";
+                                                        document.querySelector(".time1").style.color="#DCB51A";
+                                                        console.log(correct);
+                                                        document.getElementById("submit6").style="display:none";
+                                                    
+                                                        document.querySelector(".jio").style="display:none";}
+
+                                
+                                    console.log(correct);
+                                }
+                      
+                            break; }
+                            case "submit5":
+                            {
+                               
+                            
+                                var correct=4;
+                                document.querySelector(".time1").classList.add("time2");
+                                var question=document.quiz4.question5.value;
+
+                                if(question=="")
+                                {
+                                   
+                                    var a=document.querySelector(".pop-up1");
+                                    a.style.cssText="display:block;width:200px;height:100px;";
+
+                                   
+                                   document.getElementById("invalid").classList.add("bu");
+                                   
+                                    document.querySelector(".permit1").innerHTML="please click the answer";
+                                    document.getElementById("invalid").style="display:block";
+                                    document.querySelector(".time").style="display:block";
+                                    document.querySelector(".stop").style="display:none";
+                                    document.querySelector(".req").style="display:none";
+                                    
+                                    document.getElementById("invalid").addEventListener("click",valid);
+                                    function valid()
+                                    {
+                                        document.querySelector(".pop-up1").style="display:none";
+                                    }
+                                }
+                               
+                               
+                                else if(question=="FALSE")
+                                {
+                                    i=1000;
+                                    debugger
+                                    document.querySelector(".time1").style="display:block";
+                                    document.querySelector(".time1").style.color="#DCB51A";
+                                    document.querySelector(".time1").style.fontSize="60px";
+                                    document.querySelector(".time1").innerHTML="YOU WON THE GAME!"
+                                    document.getElementById("next4").style="display:none";
+                                    document.querySelector(".jio").style="display:block";
+                                    document.querySelector(".one1").style="display:none";
+                                    document.querySelector(".h3").style="display:block";
+                                    document.querySelector(".good").style="display:block";
+                                   
+                                    document.querySelector(".circle").classList.add("circle10");
+                                        
+                                   
+                                    document.querySelector(".one").style="display:block";
+                                    document.querySelector(".quiz4").style="display:none";
+                                    document.querySelector(".ques-container").style="display:none";
+                                    
+                                    document.getElementById("submit5").style="display:none";
+                                   
+                                
+                                    
+                                     correct++;
+                                     document.getElementById("submit6").style="display:block";
+                                     document.getElementById("submit6").addEventListener("click",score);
+
+                                    function score(){  i=1000;
+                                                    debugger;
+                                                        document.querySelector(".time1").style.fontSize="100px";
+                                                        
+                                                        document.querySelector(".time1").innerHTML="SCORE:"+correct;
+                                                        document.querySelector(".time1").style="display:block";
+                                                        document.querySelector(".time1").style.color="#DCB51A";
+                                                        console.log(correct);
+                                                        document.getElementById("submit6").style="display:none";
+                                                    
+                                                        document.querySelector(".jio").style="display:none";}
+
+                                
+                                    console.log(correct);
+                                
+                                    
+                            
+                           
+                                }
+                                else
+                                {
+                                   
+                                    document.querySelector(".next1").style="display:none";
+                                   var check=`win${1}.png`;
+                                    document.querySelector(".jio").setAttribute("src",check);
+                                    document.querySelector(".jio").style="display:block";
+                                    document.getElementById("submit6").style="display:block";
+                                    document.querySelector(".time1").innerHTML="YOU LOOSE !";
+                                    document.querySelector(".time1").style="display:block";
+                                    document.querySelector(".h3").style="display:block";
+                                    document.querySelector(".good").style="display:block";
+                                   
+                                    document.querySelector(".circle").classList.add("circle10");
+                                       
+                                   
+                                    document.querySelector(".one").style="display:block";
+                                    document.querySelector(".quiz4").style="display:none";
+                                    document.querySelector(".ques-container").style="display:none";
+                                    
+                                    document.getElementById("submit5").style="display:none";
+                                    
+                                    document.querySelector(".refresh").style="display:block";
+
+                                    document.getElementById("submit6").addEventListener("click",score);
+
+                                    function score(){  i=1000;
+                                                    debugger;
+                                                        document.querySelector(".time1").style.fontSize="100px";
+                                                        
+                                                        document.querySelector(".time1").innerHTML="SCORE:"+correct;
+                                                        document.querySelector(".time1").style="display:block";
+                                                        document.querySelector(".time1").style.color="#DCB51A";
+                                                        console.log(correct);
+                                                        document.getElementById("submit6").style="display:none";
+                                                    
+                                                        document.querySelector(".jio").style="display:none";}
+
+                                
+                                    console.log(correct);
+                                }
+                      
+                            break; 
+                            }
+                          
+                       }
+                      
+                   }
+
+
+                var nextlength=document.querySelectorAll(".next1").length;
+                console.log(nextlength)
+
+                for(n=0;n<nextlength;n++)
+                {
+                    document.querySelectorAll(".next1")[n].addEventListener("click",next);
+                }
+
+                function next()
+                {
+                   i=0;
+                   debugger
+                  
+                   i=30;
+                  
+                    document.querySelector(".time").style="display:block";
+                    document.querySelector(".stop").style="display:none";
+                    document.querySelector(".next1").style="display:none";
+                     document.querySelector(".jio").style="display:none";
+                    document.querySelector(".one1").style="display:none";
+                    document.querySelector(".h3").style="display:none";
+                    document.querySelector(".good").style="display:none";
+                    document.querySelector(".circle").classList.add("circle3");
+                    document.querySelector(".ques-container").style="display:block";
+                   
+                    var show=this.name;
+
+                    switch(show)
+                    {
+                        case "next1":
+                        {
+                           debugger
+                           
+                            document.querySelector(".question").innerHTML="Question :2";
+                            document.querySelector(".one").innerHTML=`#include "stdio .h" \n \n int main() \n \n { int x , y =5 ,z =5 ;   x = y == z;   printf("%d",x);  return 0;}`;
+                            
+                            document.querySelector(".quiz1").style="display:block";
+                            document.getElementById("submit1").style="display:none";
+                            document.getElementById("submit2").style="display:block";
+                        
+                        
+                            break; 
+
+                        }
+                        case "next2":
+                        {
+                            
+                            document.querySelector(".question").innerHTML="Question :3";
+                            document.querySelector(".one").innerHTML=`Which of the following statement / statement is / are \n \n correct corresponding to the definition of integer:`;
+                            document.querySelector(".circle").classList.add("circle5");
+                           
+                            document.querySelector(".quiz2").style="display:block";
+                           
+                            document.getElementById("submit3").style="display:block";
+                            document.getElementById("next2").style="display:none";
+                           
+                        
+                            break;
+
+                        }
+
+                        case "next3":
+                        {
+                           
+                            document.querySelector(".question").innerHTML="Question :4";
+                            document.querySelector(".one").innerHTML=`What is the output of the following fragment : \n \n int main()  {   int  var = 052 ;  printf("%d",var)   return 0;;`;
+                            document.querySelector(".circle").classList.add("circle7");
+                           
+                            document.querySelector(".quiz3").style="display:block";
+
+                           
+                            document.getElementById("submit4").style="display:block";
+                           
+                            document.getElementById("next3").style="display:none";
+                            
+                        
+                            break;
+
+                        }
+                        case "next4":
+                        {
+                            
+                            document.querySelector(".question").innerHTML="Question :5";
+                            document.querySelector(".one").innerHTML=`#include "stdio .h"  \n \n  int main() { \n \n  int a =10 , b = 20 , c =30;    if ( c > b > a )   printf("TRUE");   else  printf("FALSE");   return 0; }`;
+                            document.querySelector(".circle").classList.add("circle9");
+                            
+                            document.querySelector(".quiz4").style="display:block";
+
+                            
+                            document.getElementById("submit5").style="display:block";
+                           
+                            document.getElementById("next4").style="display:none";
+                        
+                            break;
+
+                        }
+                    }
+                }
+            }        
+        } 
+        document.querySelector(".refresh").addEventListener("click",load);
+        function load()
+        {
+            location.reload(true);
+        }
+           
+       </script>
+        
+</body>
+
+</html>
