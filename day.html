@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;box-sizing: border-box;}
+        body
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #001f3f;
+            font-family: 'poppins',sans-serif`;
+        }
+        h2
+        {
+            position: absolute;
+            top:5%;
+            color:#ffd717;
+            font-size:2.5rem;
+        }
+        .container
+        {
+           
+           
+         width: 50%;
+         
+        }
+        h1
+        {
+           
+            padding: 15px;
+            font-size: 2.5rem;
+            color: #ffd717;
+            
+        }
+        p{text-align: left;
+        overflow: hidden;
+         letter-spacing: .2pt;
+         display: none;color: #0da574;font-size: 20px;
+         }
+    </style>
+</head>
+<body>
+    <h2>HTML CSS & javascript</h2>
+    <div class="container">
+        <h1>AUTO TYPING EFFECT</h1>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo autem amet eligendi laboriosam sunt provident inventore itaque est voluptas porro deserunt odit tenetur, quod commodi. Facilis, officia vel. Voluptates aliquam illum tempora sequi aliquid dolores velit qui accusantium quibusdam commodi aut, mollitia vel itaque, debitis libero? Voluptates magnam deserunt temporibus.</p>
+    </div>
+    <script>
+        function typing(element,speed)
+        {
+            debugger
+            var text=element.innerHTML;
+            element.innerHTML="";
+            var i=0;
+           var timer= setInterval(function()
+            {
+               if(i<text.length)
+               {
+                element.append(text.charAt(i));
+                i++;
+               }
+                   
+                else{
+                    clearInterval(timer);
+                }
+            },speed);
+        }
+
+        var speed=105;
+        var h1=document.querySelector("h1");
+        var p=document.querySelector("p");
+        var delay=speed*20+75;
+        debugger;
+        typing(h1,speed);
+        setTimeout(function(){
+            p.style.display="inline-block";
+            typing(p,speed);
+        },delay);
+
+    </script>
+    
+</body>
+</html>
+
